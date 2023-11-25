@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5m5b0ddi0rrm"]
+
+[ext_resource type="Script" path="res://Code/playerStart.gd" id="1_0d0us"]
+[ext_resource type="Texture2D" uid="uid://dwilyu7kp31f8" path="res://textures/Tools3.jpg" id="1_ykx2u"]
+[ext_resource type="Script" path="res://Code/AutoHide.gd" id="3_o3d0t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f10xu"]
+albedo_texture = ExtResource("1_ykx2u")
+uv1_scale = Vector3(2.99, 1.995, 2.99)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ulg3"]
+size = Vector3(1, 2, 1)
+
+[node name="playerStart" type="Node3D"]
+script = ExtResource("1_0d0us")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_f10xu")
+mesh = SubResource("BoxMesh_8ulg3")
+script = ExtResource("3_o3d0t")

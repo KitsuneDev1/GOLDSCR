@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://2oxdgu03lnbk"]
+
+[ext_resource type="PackedScene" uid="uid://8oy3xm2sff8" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="1_fbpun"]
+[ext_resource type="Script" path="res://addons/character-controller/example/main/player.gd" id="2_8r0nc"]
+[ext_resource type="Environment" uid="uid://b3cn01u84faiy" path="res://addons/character-controller/example/main/underwater.tres" id="3_dxksd"]
+[ext_resource type="PackedScene" uid="uid://b4njf42j38q2w" path="res://Prefab/BaseGun.tscn" id="4_85cgc"]
+[ext_resource type="PackedScene" path="res://addons/character-controller/example/main/audios/player_audios.tscn" id="4_ux8kv"]
+[ext_resource type="Script" path="res://Code/Use.gd" id="5_3w160"]
+[ext_resource type="Script" path="res://Code/CentrateCamera.gd" id="6_acjkt"]
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_fbpun")]
+script = ExtResource("2_8r0nc")
+input_back_action_name = "move_backward"
+input_forward_action_name = "move_forward"
+input_left_action_name = "move_left"
+input_right_action_name = "move_right"
+input_sprint_action_name = "move_sprint"
+input_jump_action_name = "move_jump"
+input_crouch_action_name = "move_crouch"
+input_fly_mode_action_name = "move_fly_mode"
+underwater_env = ExtResource("3_dxksd")
+
+[node name="Camera" parent="Head" index="0"]
+cull_mask = 1048573
+
+[node name="BaseGun" parent="Head" index="2" instance=ExtResource("4_85cgc")]
+transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, -0.155, -0.827, -1.29)
+
+[node name="Use" type="Node" parent="Head" index="3"]
+script = ExtResource("5_3w160")
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Use" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.225826, 0)
+target_position = Vector3(0, -6, 0)
+
+[node name="Player Audios" parent="." index="9" instance=ExtResource("4_ux8kv")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="10"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="GunCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
+cull_mask = 2
+script = ExtResource("6_acjkt")

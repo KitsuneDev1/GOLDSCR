@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://b2klltrhsi8d6"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="TBLoader" type="TBLoader" parent="."]

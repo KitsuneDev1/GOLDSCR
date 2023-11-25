@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhqrr2w7vpuky"]
+
+[ext_resource type="Script" path="res://Code/Trigger.gd" id="1_46oya"]
+[ext_resource type="Texture2D" uid="uid://b60yhjv78im87" path="res://textures/Tools1.jpg" id="1_nfyet"]
+[ext_resource type="Script" path="res://Code/AutoHide.gd" id="3_27aku"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t8wd1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnp3y"]
+albedo_texture = ExtResource("1_nfyet")
+uv1_scale = Vector3(1.09, 0.57, 1)
+uv1_offset = Vector3(0.525, 0.465, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ssjlh"]
+
+[node name="Trigger" type="Node3D"]
+script = ExtResource("1_46oya")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+mesh = SubResource("BoxMesh_t8wd1")
+material = SubResource("StandardMaterial3D_pnp3y")
+script = ExtResource("3_27aku")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ssjlh")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

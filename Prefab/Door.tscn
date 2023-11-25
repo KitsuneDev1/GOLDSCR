@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://7rqwcbn3v5t7"]
+
+[ext_resource type="Texture2D" uid="uid://cpyefn1objsl8" path="res://textures/Door.png" id="1_7xml6"]
+[ext_resource type="Script" path="res://Code/Door.gd" id="1_8jk65"]
+
+[sub_resource type="Animation" id="Animation_qyvjf"]
+resource_name = "Close"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 2, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_ravte"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_vevei"]
+resource_name = "Open"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 1, 0, 2, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5eh6"]
+_data = {
+"Close": SubResource("Animation_qyvjf"),
+"Idle": SubResource("Animation_ravte"),
+"Open": SubResource("Animation_vevei")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hva8t"]
+albedo_texture = ExtResource("1_7xml6")
+uv1_scale = Vector3(1.03, 0.52, 1)
+uv1_offset = Vector3(0.5, 0.495, 0)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ky2x0"]
+material = SubResource("StandardMaterial3D_hva8t")
+size = Vector3(1, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uad7c"]
+size = Vector3(1, 2, 0.5)
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_8jk65")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w5eh6")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_ky2x0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_uad7c")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
