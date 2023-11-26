@@ -2,9 +2,11 @@ extends Node3D
 
 @export var autoCloseTimer = 5
 @export var autoClose = true
-@export var canUseByPlayer = true
 
 var closed = true
+
+func _ready():
+	$Timer.wait_time=autoCloseTimer
 
 func Use():
 	if(closed==true):

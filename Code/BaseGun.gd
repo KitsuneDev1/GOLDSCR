@@ -17,16 +17,17 @@ func _process(_delta):
 			Shoot()
 
 func Shoot():
+	$SFX.play()
 	$FireRateTimer.start()
 	canShoot=false
 	$Flash.visible = true
 	$FlashTimer.start()
 	if(hitRay.is_colliding()):
 		if(hitRay.get_collider().is_in_group("Solid")):
-			print("solid hit")
 			var inst = sparks.instantiate()
 			add_child(inst)
 			inst.global_position = hitRay.get_collision_point()
+			inst.emitting = true
 			inst.reparent($"../..".get_parent())
 
 func _on_flash_timer_timeout():

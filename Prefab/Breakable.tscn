@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwjx68ku4mbyx"]
+
+[ext_resource type="Script" path="res://Code/Breakable.gd" id="1_yx2p3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvyvc"]
+transparency = 1
+albedo_color = Color(0.513726, 0.737255, 0.717647, 0.588235)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnnq8"]
+material = SubResource("StandardMaterial3D_fvyvc")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnrrh"]
+
+[node name="Breakable" type="StaticBody3D"]
+script = ExtResource("1_yx2p3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gnnq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lnrrh")
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]

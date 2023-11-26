@@ -26,11 +26,12 @@ cull_mask = 1048573
 [node name="BaseGun" parent="Head" index="2" instance=ExtResource("4_85cgc")]
 transform = Transform3D(1, 0, 0, 0, 0.999048, -0.0436194, 0, 0.0436194, 0.999048, -0.155, -0.827, -1.29)
 
-[node name="Use" type="Node" parent="Head" index="3"]
+[node name="Node3D" type="Node3D" parent="Head" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.209184, 0)
 script = ExtResource("5_3w160")
 
-[node name="RayCast3D" type="RayCast3D" parent="Head/Use" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.225826, 0)
+[node name="RayCast3D" type="RayCast3D" parent="Head/Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, -6, 0)
 
 [node name="Player Audios" parent="." index="9" instance=ExtResource("4_ux8kv")]

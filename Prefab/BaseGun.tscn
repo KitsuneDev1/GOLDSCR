@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4njf42j38q2w"]
+[gd_scene load_steps=8 format=3 uid="uid://b4njf42j38q2w"]
 
 [ext_resource type="Texture2D" uid="uid://dwo6i58118bvk" path="res://Assets/Pistol_0.png" id="1_7qyml"]
 [ext_resource type="Script" path="res://Code/BaseGun.gd" id="1_uddhl"]
 [ext_resource type="Texture2D" uid="uid://cs3f8ldcijctp" path="res://Assets/Flash.png" id="3_o67jt"]
+[ext_resource type="AudioStream" uid="uid://nclb4w6jg6ls" path="res://Assets/BaseShoot.wav" id="4_w5cv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsnkk"]
 resource_name = "material_0"
@@ -70,6 +71,10 @@ wait_time = 0.5
 
 [node name="FlashTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352048, 0)
+stream = ExtResource("4_w5cv5")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

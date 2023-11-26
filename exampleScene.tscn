@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2klltrhsi8d6"]
+[gd_scene load_steps=17 format=3 uid="uid://b2klltrhsi8d6"]
 
 [ext_resource type="Texture2D" uid="uid://dka4ujx8lh2rq" path="res://textures/Env1.jpg" id="1_0xkj0"]
 [ext_resource type="Texture2D" uid="uid://sr4tgm4x4df5" path="res://textures/Env2.jpg" id="2_82q3o"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://addons/character-controller/example/main/player.tscn" id="4_jsrs7"]
 [ext_resource type="PackedScene" uid="uid://b5m5b0ddi0rrm" path="res://Prefab/playerStart.tscn" id="5_2wnif"]
 [ext_resource type="PackedScene" uid="uid://dhkv7d283nr5a" path="res://Prefab/DoorPrefab.tscn" id="6_gflhg"]
+[ext_resource type="PackedScene" uid="uid://bhqrr2w7vpuky" path="res://Prefab/Trigger.tscn" id="7_ih878"]
+[ext_resource type="PackedScene" uid="uid://cwjx68ku4mbyx" path="res://Prefab/Breakable.tscn" id="8_tfvec"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nt2gs"]
 sky_horizon_color = Color(0.651152, 0.659578, 0.673774, 1)
@@ -100,7 +102,19 @@ shape = SubResource("ConcavePolygonShape3D_yu1lh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25161, 0)
 
 [node name="playerStart" parent="." instance=ExtResource("5_2wnif")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.789405, 5.25125, 12.7446)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.990786, 5.00819, 12.9364)
 
 [node name="DoorPrefab" parent="." instance=ExtResource("6_gflhg")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.57761, 2.04756, 9.87157)
+transform = Transform3D(0.781587, 0, 0, 0, 0.435602, 0, 0, 0, 0.3, -5.93014, 2.73174, 6.70024)
+autoClose = false
+
+[node name="Trigger" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("7_ih878")]
+transform = Transform3D(3.13544, 0, 0, 0, 2.81159, 0, 0, 0, 1, -6.01393, 2.39236, -0.467919)
+targets = [NodePath("../DoorPrefab")]
+
+[node name="Breakable" parent="." instance=ExtResource("8_tfvec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96831, 1.54954, 9.41299)
+
+[node name="Trigger2" parent="." node_paths=PackedStringArray("targets") instance=ExtResource("7_ih878")]
+transform = Transform3D(3.75642, 0, 0, 0, 2.95257, 0, 0, 0, 1, 5.96446, 2.56624, 8.06768)
+targets = [NodePath("../Breakable")]

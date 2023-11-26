@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcqyhdj02h6li"]
+
+[ext_resource type="Script" path="res://Code/ExplosionForce.gd" id="1_p6m7g"]
+[ext_resource type="ArrayMesh" uid="uid://bt0a5lqjakk4s" path="res://Assets/gib1.obj" id="2_buqdj"]
+[ext_resource type="ArrayMesh" uid="uid://crvsyfo4qplq3" path="res://Assets/gib2.obj" id="3_mfhxe"]
+[ext_resource type="ArrayMesh" uid="uid://c6pet4m4cncg" path="res://Assets/gib3.obj" id="4_7r0hn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w67jp"]
+friction = 0.25
+bounce = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnhdq"]
+transparency = 1
+albedo_color = Color(0.513726, 0.737255, 0.717647, 0.588235)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ywftg"]
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrkin"]
+transparency = 1
+albedo_color = Color(0.513726, 0.737255, 0.717647, 0.588235)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05o3t"]
+transparency = 1
+albedo_color = Color(0.513726, 0.737255, 0.717647, 0.588235)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jny6x"]
+radius = 0.35
+
+[node name="GibsGlass" type="Node3D" node_paths=PackedStringArray("targets")]
+script = ExtResource("1_p6m7g")
+targets = [NodePath("Gib1"), NodePath("Gib2"), NodePath("Gib3"), NodePath("Gib4"), NodePath("Gib5"), NodePath("Gib6")]
+
+[node name="Gib1" type="RigidBody3D" parent="."]
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_w67jp")
+
+[node name="Gib1" type="MeshInstance3D" parent="Gib1"]
+mesh = ExtResource("2_buqdj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qnhdq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gib1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.415472, 0)
+shape = SubResource("SphereShape3D_ywftg")
+
+[node name="Gib2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99393, 0, 0)
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_w67jp")
+
+[node name="Gib1" type="MeshInstance3D" parent="Gib2"]
+mesh = ExtResource("3_mfhxe")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrkin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gib2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.068337, 0.502434, 0.0296711)
+shape = SubResource("SphereShape3D_ywftg")
+
+[node name="Gib3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.544575, 0, -0.849447)
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_w67jp")
+
+[node name="Gib1" type="MeshInstance3D" parent="Gib3"]
+mesh = ExtResource("4_7r0hn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_05o3t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gib3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.080349, 0.515937, 0.0909723)
+shape = SubResource("SphereShape3D_jny6x")
+
+[node name="Gib4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.98173, 0, -0.190278, 0, 1, 0, 0.190278, 0, 0.98173, -0.0632463, 0.680328, 0.092408)
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_w67jp")
+
+[node name="Gib1" type="MeshInstance3D" parent="Gib4"]
+mesh = ExtResource("2_buqdj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_qnhdq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gib4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.415472, 0)
+shape = SubResource("SphereShape3D_ywftg")
+
+[node name="Gib5" type="RigidBody3D" parent="."]
+transform = Transform3D(0.98173, 0, -0.190278, 0, 1, 0, 0.190278, 0, 0.98173, -1.03902, 0.680328, -0.0967147)
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_w67jp")
+
+[node name="Gib1" type="MeshInstance3D" parent="Gib5"]
+mesh = ExtResource("3_mfhxe")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_lrkin")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gib5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.068337, 0.502434, 0.0296711)
+shape = SubResource("SphereShape3D_ywftg")
+
+[node name="Gib6" type="RigidBody3D" parent="."]
+transform = Transform3D(0.98173, 0, -0.190278, 0, 1, 0, 0.190278, 0, 0.98173, -0.436241, 0.680328, -0.84514)
+mass = 0.15
+physics_material_override = SubResource("PhysicsMaterial_w67jp")
+
+[node name="Gib1" type="MeshInstance3D" parent="Gib6"]
+mesh = ExtResource("4_7r0hn")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_05o3t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gib6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.080349, 0.515937, 0.0909723)
+shape = SubResource("SphereShape3D_jny6x")
