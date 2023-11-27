@@ -24,6 +24,8 @@ class_name Player
 
 @export var underwater_env: Environment
 
+var Health = 100
+var Armor = 100
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -63,3 +65,12 @@ func _on_controller_emerged():
 
 func _on_controller_subemerged():
 	camera.environment = underwater_env
+	
+func _process(delta):
+	if(Health<=0):
+		print("Death")
+	if(Input.is_action_just_pressed("Debug")):
+		Health-=10
+		Armor-=10
+	$Control/Panel/Health.text = ("HEALTH:" + str(Health))
+	$Control/Panel/Armor.text = ("ARMOR: " + str(Armor))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4njf42j38q2w"]
+[gd_scene load_steps=11 format=3 uid="uid://b4njf42j38q2w"]
 
 [ext_resource type="Texture2D" uid="uid://dwo6i58118bvk" path="res://Assets/Pistol_0.png" id="1_7qyml"]
 [ext_resource type="Script" path="res://Code/BaseGun.gd" id="1_uddhl"]
@@ -48,6 +48,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_imnbf")
 
+[sub_resource type="Animation" id="Animation_58hsa"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_mos73"]
+resource_name = "Shoot"
+length = 0.4
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.2, 1, 0, 0, 0.8, 0.4, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0.0650113, 0, 0, 0.997885, 0.4, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhab3"]
+_data = {
+"Idle": SubResource("Animation_58hsa"),
+"Shoot": SubResource("Animation_mos73")
+}
+
 [node name="BaseGun" type="Node3D"]
 script = ExtResource("1_uddhl")
 
@@ -56,10 +83,10 @@ layers = 2
 mesh = SubResource("ArrayMesh_5wt8t")
 skeleton = NodePath("")
 
-[node name="HitRay" type="RayCast3D" parent="."]
+[node name="HitRay" type="RayCast3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.160128, 0.384835, -0.448839)
 
-[node name="Flash" type="Sprite3D" parent="."]
+[node name="Flash" type="Sprite3D" parent="Mesh"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.177348, 0.45142, -0.482163)
 visible = false
 billboard = 1
@@ -75,6 +102,11 @@ wait_time = 0.1
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352048, 0)
 stream = ExtResource("4_w5cv5")
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mhab3")
+}
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

@@ -100,6 +100,42 @@ shape = SubResource("ConcavePolygonShape3D_yu1lh")
 
 [node name="Player" parent="." instance=ExtResource("4_jsrs7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25161, 0)
+input_back_action_name = "move_backward"
+input_forward_action_name = "move_forward"
+input_left_action_name = "move_left"
+input_right_action_name = "move_right"
+input_sprint_action_name = "move_sprint"
+input_jump_action_name = "move_jump"
+input_crouch_action_name = "move_crouch"
+input_fly_mode_action_name = "move_fly_mode"
+fov_change_speed = 4
+sprint_fov_multiplier = 1.1
+crouch_fov_multiplier = 0.95
+swim_fov_multiplier = 1.0
+mouse_sensitivity = 2.0
+vertical_angle_limit = 90.0
+step_bob_enabled = true
+vertical_horizontal_ratio = 2
+jump_bob_enabled = true
+rotation_to_move = true
+speed_rotation = 4.0
+angle_limit_for_rotation = 0.1
+gravity_multiplier = 3.0
+speed = 10
+acceleration = 8
+deceleration = 10
+air_control = 0.3
+sprint_speed_multiplier = 1.6
+step_lengthen = 0.7
+step_interval = 6.0
+height_in_crouch = 1.0
+crouch_speed_multiplier = 0.7
+jump_height = 10
+fly_mode_speed_modifier = 2
+submerged_height = 0.36
+floating_height = 0.75
+on_water_speed_multiplier = 0.75
+submerged_speed_multiplier = 0.5
 
 [node name="playerStart" parent="." instance=ExtResource("5_2wnif")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.990786, 5.00819, 12.9364)

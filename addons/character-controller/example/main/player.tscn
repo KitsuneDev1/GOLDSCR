@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://2oxdgu03lnbk"]
+[gd_scene load_steps=9 format=3 uid="uid://2oxdgu03lnbk"]
 
 [ext_resource type="PackedScene" uid="uid://8oy3xm2sff8" path="res://addons/character-controller/fps/fps_controller_3d.tscn" id="1_fbpun"]
 [ext_resource type="Script" path="res://addons/character-controller/example/main/player.gd" id="2_8r0nc"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" path="res://addons/character-controller/example/main/audios/player_audios.tscn" id="4_ux8kv"]
 [ext_resource type="Script" path="res://Code/Use.gd" id="5_3w160"]
 [ext_resource type="Script" path="res://Code/CentrateCamera.gd" id="6_acjkt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ibwu"]
+bg_color = Color(0.427451, 0.65098, 0.607843, 1)
+skew = Vector2(0.145, 0.125)
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_fbpun")]
 script = ExtResource("2_8r0nc")
@@ -54,3 +58,43 @@ render_target_update_mode = 4
 [node name="GunCam" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport" index="0"]
 cull_mask = 2
 script = ExtResource("6_acjkt")
+
+[node name="Control" type="Control" parent="." index="11"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control" index="0"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 535.0
+offset_right = 339.0
+offset_bottom = 685.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ibwu")
+
+[node name="Health" type="Label" parent="Control/Panel" index="0"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 35.0
+offset_right = 219.0
+offset_bottom = 87.0
+rotation = -0.135089
+theme_override_colors/font_color = Color(0.662745, 0.411765, 0.129412, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "HEALTH:100"
+
+[node name="Armor" type="Label" parent="Control/Panel" index="1"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 84.0
+offset_right = 224.0
+offset_bottom = 136.0
+rotation = -0.135089
+theme_override_colors/font_color = Color(0.662745, 0.411765, 0.129412, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "ARMOR: 100"

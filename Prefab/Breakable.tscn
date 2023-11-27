@@ -11,7 +11,7 @@ material = SubResource("StandardMaterial3D_fvyvc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lnrrh"]
 
-[node name="Breakable" type="StaticBody3D"]
+[node name="Breakable" type="StaticBody3D" groups=["Breakable"]]
 script = ExtResource("1_yx2p3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

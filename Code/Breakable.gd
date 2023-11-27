@@ -14,3 +14,5 @@ func Use():
 	inst.reparent($".".get_parent())
 	inst.scale = Vector3(1,1,1)
 	self.queue_free()
+func _takeDamage(ammount):
+	health-=ammount
