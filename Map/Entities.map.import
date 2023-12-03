@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://bwtolhlb7kesx"
+path="res://.godot/imported/Entities.map-8e028fb74facc7fff816c58a1a4b1d1f.tres"
+
+[deps]
+
+source_file="res://Map/Entities.map"
+dest_files=["res://.godot/imported/Entities.map-8e028fb74facc7fff816c58a1a4b1d1f.tres"]
+
+[params]
+

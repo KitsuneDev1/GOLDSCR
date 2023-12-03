@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3hvwqnvm6b6t"]
+
+[ext_resource type="Script" path="res://Code/info_trigger_damage.gd" id="1_lg6ah"]
+[ext_resource type="Texture2D" uid="uid://b60yhjv78im87" path="res://textures/Tools1.jpg" id="1_pbk08"]
+[ext_resource type="Script" path="res://Code/AutoHide.gd" id="2_wrrvv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iq7yx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tifbb"]
+albedo_texture = ExtResource("1_pbk08")
+uv1_scale = Vector3(1.09, 0.57, 1)
+uv1_offset = Vector3(0.525, 0.465, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrkir"]
+
+[node name="InfoTriggerDamage" type="Node3D"]
+script = ExtResource("1_lg6ah")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_iq7yx")
+material = SubResource("StandardMaterial3D_tifbb")
+script = ExtResource("2_wrrvv")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_lrkir")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

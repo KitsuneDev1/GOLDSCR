@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://c7hsfyyk5fugk"
+path="res://.godot/imported/ExampleMap.map-c9ebfc5048b3e33eb581d4924229e74b.tres"
+
+[deps]
+
+source_file="res://Map/ExampleMap.map"
+dest_files=["res://.godot/imported/ExampleMap.map-c9ebfc5048b3e33eb581d4924229e74b.tres"]
+
+[params]
+

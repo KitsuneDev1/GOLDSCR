@@ -20,6 +20,7 @@ texture_filter = 0
 script = ExtResource("1_46oya")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+cast_shadow = 0
 mesh = SubResource("BoxMesh_t8wd1")
 material = SubResource("StandardMaterial3D_pnp3y")
 script = ExtResource("3_27aku")

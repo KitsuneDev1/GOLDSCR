@@ -24,6 +24,9 @@ class_name Player
 
 @export var underwater_env: Environment
 
+@export var canMove = true
+var death = false
+
 var Health = 100
 var Armor = 100
 
@@ -46,12 +49,12 @@ func _physics_process(delta):
 		var input_sprint = Input.is_action_pressed(input_sprint_action_name)
 		var input_swim_down = Input.is_action_pressed(input_crouch_action_name)
 		var input_swim_up = Input.is_action_pressed(input_jump_action_name)
-		move(delta, input_axis, input_jump, input_crouch, input_sprint, input_swim_down, input_swim_up)
+		if(canMove):
+			move(delta, input_axis, input_jump, input_crouch, input_sprint, input_swim_down, input_swim_up)
 	else:
 		# NOTE: It is important to always call move() even if we have no inputs 
 		## to process, as we still need to calculate gravity and collisions.
 		move(delta)
-
 
 func _input(event: InputEvent) -> void:
 	# Mouse look (only if the mouse is captured).
@@ -67,10 +70,42 @@ func _on_controller_subemerged():
 	camera.environment = underwater_env
 	
 func _process(delta):
+	if(death and Input.is_anything_pressed()):
+		print("ToMenu")
+	if(Health>100):
+		Health = 100
+	if(Armor>100):
+		Armor=100
+	if(Armor<0):
+		Armor=0
 	if(Health<=0):
-		print("Death")
-	if(Input.is_action_just_pressed("Debug")):
-		Health-=10
-		Armor-=10
+		Health=0
+		_death()
 	$Control/Panel/Health.text = ("HEALTH:" + str(Health))
 	$Control/Panel/Armor.text = ("ARMOR: " + str(Armor))
+
+func _heal(ammount):
+	if(Health>100):
+		Health=100
+	else:
+		Health+=ammount
+func _healBattery(ammount):
+	if(Armor>100):
+		Armor=100
+	else:
+		Armor+=ammount
+		
+func _takeDamage(ammount):
+	if(Armor>0):
+		Armor-=ammount
+	else:
+		Health-=ammount
+		
+func _death():
+	$Death/DeathCam.make_current()
+	canMove=false
+	$Head/BaseGun.visible=false
+	$Head/BaseGun.process_mode=Node.PROCESS_MODE_DISABLED
+	$Death/Control/DeathOverlay.visible=true
+	$Death/Control/AnimationPlayer.play("Action")
+	death=true

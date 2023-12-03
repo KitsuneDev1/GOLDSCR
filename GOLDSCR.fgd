@@ -1,0 +1,19 @@
+@PointClass = info_player_start []
+
+@SolidClass = info_trigger []
+
+@SolidClass = func_glass []
+
+@SolidClass = func_door []
+
+@PointClass = gun_base_pickup []
+
+@PointClass = item_medkit []
+
+@PointClass = item_battery []
+
+@PointClass = env_steam []
+
+@SolidClass = info_trigger_damage []
+
+@SolidClass = info_trigger_death []
