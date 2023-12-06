@@ -26,11 +26,11 @@ class_name Player
 
 @export var canMove = true
 var death = false
-
 var Health = 100
 var Armor = 100
 
 func _ready():
+	$Save.scene=get_tree().current_scene.scene_file_path
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	setup()
 	emerged.connect(_on_controller_emerged.bind())
@@ -70,8 +70,13 @@ func _on_controller_subemerged():
 	camera.environment = underwater_env
 	
 func _process(delta):
+	if(Input.is_action_just_pressed("Load")):
+		$Save._load()
+	if(Input.is_action_just_pressed("Save")):
+		$Save.save()
+		$Save.scene=get_tree().current_scene.scene_file_path
 	if(death and Input.is_anything_pressed()):
-		print("ToMenu")
+		$Save._load()
 	if(Health>100):
 		Health = 100
 	if(Armor>100):
@@ -83,6 +88,10 @@ func _process(delta):
 		_death()
 	$Control/Panel/Health.text = ("HEALTH:" + str(Health))
 	$Control/Panel/Armor.text = ("ARMOR: " + str(Armor))
+	if(Input.is_action_just_pressed("Pause")):
+		$Pause.visible=true
+		get_tree().paused=true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _heal(ammount):
 	if(Health>100):

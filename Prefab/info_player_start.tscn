@@ -20,3 +20,6 @@ material_override = SubResource("StandardMaterial3D_f10xu")
 cast_shadow = 0
 mesh = SubResource("BoxMesh_8ulg3")
 script = ExtResource("3_o3d0t")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

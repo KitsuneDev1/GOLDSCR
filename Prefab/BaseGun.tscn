@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dwo6i58118bvk" path="res://Assets/Pistol_0.png" id="1_7qyml"]
 [ext_resource type="Script" path="res://Code/BaseGun.gd" id="1_uddhl"]
 [ext_resource type="Texture2D" uid="uid://cs3f8ldcijctp" path="res://Assets/Flash.png" id="3_o67jt"]
-[ext_resource type="AudioStream" uid="uid://nclb4w6jg6ls" path="res://Assets/BaseShoot.wav" id="4_w5cv5"]
+[ext_resource type="AudioStream" uid="uid://nclb4w6jg6ls" path="res://Assets/SFX/BaseShoot.wav" id="4_w5cv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsnkk"]
 resource_name = "material_0"
@@ -87,7 +87,7 @@ mesh = SubResource("ArrayMesh_5wt8t")
 skeleton = NodePath("")
 
 [node name="HitRay" type="RayCast3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.160128, 0.384835, -0.448839)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.160128, 0.823143, 0.936807)
 
 [node name="Flash" type="Sprite3D" parent="Mesh"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.177348, 0.45142, -0.482163)

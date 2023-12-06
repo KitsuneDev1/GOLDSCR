@@ -1,0 +1,321 @@
+[gd_scene load_steps=8 format=3 uid="uid://bq7ew2lv65i4b"]
+
+[ext_resource type="Script" path="res://Code/PauseMenu.gd" id="1_in3wi"]
+[ext_resource type="FontFile" uid="uid://bl00e0jktuk72" path="res://Assets/Font/FSEX300.ttf" id="1_yelxl"]
+[ext_resource type="Script" path="res://Code/OmegaManager.gd" id="3_ouvl5"]
+[ext_resource type="FontFile" uid="uid://ck0gmjka1c36g" path="res://Assets/Font/RobotoMono-Bold.ttf" id="4_ub7fm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkwqy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0n01"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1os4i"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_in3wi")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 114.0
+offset_right = 334.0
+offset_bottom = 274.0
+scale = Vector2(1.16, 0.695)
+theme_override_colors/font_color = Color(0.619608, 0.45098, 0, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 160
+text = "GOLD"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 224.0
+offset_right = 261.0
+offset_bottom = 643.0
+theme_override_constants/separation = 19
+alignment = 1
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.505882, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkwqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0n01")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1os4i")
+text = "Resume"
+
+[node name="New" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.505882, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkwqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0n01")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1os4i")
+text = "New"
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.505882, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkwqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0n01")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1os4i")
+text = "Load"
+
+[node name="Save" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.505882, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkwqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0n01")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1os4i")
+text = "Save"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.505882, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkwqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0n01")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1os4i")
+text = "Settings"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+process_mode = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639216, 0.505882, 0.352941, 1)
+theme_override_fonts/font = ExtResource("1_yelxl")
+theme_override_font_sizes/font_size = 55
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mkwqy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l0n01")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1os4i")
+text = "Exit
+"
+
+[node name="Menu" type="Popup" parent="."]
+process_mode = 2
+position = Vector2i(430, 50)
+size = Vector2i(650, 650)
+script = ExtResource("3_ouvl5")
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.584314, 0.384314, 0.258824, 1)
+
+[node name="TabContainer" type="TabContainer" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="TabBar" parent="Menu/TabContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ub7fm")
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/TabContainer/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="GridContainer" parent="Menu/TabContainer/Video/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="ModoPantalla" type="Label" parent="Menu/TabContainer/Video/MarginContainer/Video"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.556863, 0.52549, 1)
+theme_override_font_sizes/font_size = 28
+text = "DISPLAY MODE:"
+
+[node name="OptionButton" type="OptionButton" parent="Menu/TabContainer/Video/MarginContainer/Video"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.129412, 0.6, 0.623529, 1)
+theme_override_fonts/font = ExtResource("4_ub7fm")
+item_count = 2
+selected = 1
+popup/item_0/text = "Fullscreen"
+popup/item_0/id = 0
+popup/item_1/text = "Window"
+popup/item_1/id = 1
+
+[node name="Vsync" type="Label" parent="Menu/TabContainer/Video/MarginContainer/Video"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.556863, 0.52549, 1)
+theme_override_font_sizes/font_size = 28
+text = "Vsync:
+"
+
+[node name="CheckButton" type="CheckButton" parent="Menu/TabContainer/Video/MarginContainer/Video"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Pixelate" type="Label" parent="Menu/TabContainer/Video/MarginContainer/Video"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.556863, 0.52549, 1)
+theme_override_font_sizes/font_size = 28
+text = "Pixelation:"
+
+[node name="HSlider4" type="HSlider" parent="Menu/TabContainer/Video/MarginContainer/Video"]
+custom_minimum_size = Vector2(186.08, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+min_value = 1.0
+max_value = 5.0
+value = 2.0
+
+[node name="Audio" type="TabBar" parent="Menu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/TabContainer/Audio"]
+layout_mode = 0
+offset_top = 33.14
+offset_right = 357.0
+offset_bottom = 167.14
+
+[node name="GridContainer" type="GridContainer" parent="Menu/TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Master" type="Label" parent="Menu/TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.556863, 0.52549, 1)
+theme_override_font_sizes/font_size = 28
+text = "Master:
+"
+
+[node name="HSlider" type="HSlider" parent="Menu/TabContainer/Audio/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Music" type="Label" parent="Menu/TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.556863, 0.52549, 1)
+theme_override_font_sizes/font_size = 28
+text = "Music:"
+
+[node name="HSlider2" type="HSlider" parent="Menu/TabContainer/Audio/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFX" type="Label" parent="Menu/TabContainer/Audio/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.556863, 0.52549, 1)
+theme_override_font_sizes/font_size = 28
+text = "SFX:"
+
+[node name="HSlider3" type="HSlider" parent="Menu/TabContainer/Audio/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Feel" type="TabBar" parent="Menu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/TabContainer/Feel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GridContainer" type="GridContainer" parent="Menu/TabContainer/Feel/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Master" type="Label" parent="Menu/TabContainer/Feel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.304688, 0.894531, 0.925781, 1)
+theme_override_font_sizes/font_size = 28
+text = "Master:
+"
+
+[node name="HSlider" type="HSlider" parent="Menu/TabContainer/Feel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Music" type="Label" parent="Menu/TabContainer/Feel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.304688, 0.894531, 0.925781, 1)
+theme_override_font_sizes/font_size = 28
+text = "Music:"
+
+[node name="HSlider2" type="HSlider" parent="Menu/TabContainer/Feel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SFX" type="Label" parent="Menu/TabContainer/Feel/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.304688, 0.894531, 0.925781, 1)
+theme_override_font_sizes/font_size = 28
+text = "SFX:"
+
+[node name="HSlider3" type="HSlider" parent="Menu/TabContainer/Feel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="item_selected" from="Menu/TabContainer/Video/MarginContainer/Video/OptionButton" to="Menu" method="_on_option_button_item_selected"]
+[connection signal="toggled" from="Menu/TabContainer/Video/MarginContainer/Video/CheckButton" to="Menu" method="_on_check_button_toggled"]
+[connection signal="value_changed" from="Menu/TabContainer/Video/MarginContainer/Video/HSlider4" to="Menu" method="_on_h_slider_4_value_changed"]
+[connection signal="value_changed" from="Menu/TabContainer/Audio/MarginContainer/GridContainer/HSlider" to="Menu" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Menu/TabContainer/Audio/MarginContainer/GridContainer/HSlider2" to="Menu" method="_on_h_slider_2_value_changed"]
+[connection signal="value_changed" from="Menu/TabContainer/Audio/MarginContainer/GridContainer/HSlider3" to="Menu" method="_on_h_slider_3_value_changed"]
+[connection signal="value_changed" from="Menu/TabContainer/Feel/MarginContainer/GridContainer/HSlider" to="Menu" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Menu/TabContainer/Feel/MarginContainer/GridContainer/HSlider2" to="Menu" method="_on_h_slider_2_value_changed"]
+[connection signal="value_changed" from="Menu/TabContainer/Feel/MarginContainer/GridContainer/HSlider3" to="Menu" method="_on_h_slider_3_value_changed"]
