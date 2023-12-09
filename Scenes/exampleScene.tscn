@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2klltrhsi8d6"]
+[gd_scene load_steps=25 format=3 uid="uid://b2klltrhsi8d6"]
 
 [ext_resource type="Script" path="res://Code/autoLoad.gd" id="1_bogti"]
 [ext_resource type="PackedScene" uid="uid://2oxdgu03lnbk" path="res://addons/character-controller/example/main/player.tscn" id="4_jsrs7"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dwos3xtfagnl" path="res://Prefab/item_medkit.tscn" id="12_xfpmv"]
 [ext_resource type="PackedScene" uid="uid://deraa0achneqf" path="res://Prefab/info_trigger_death.tscn" id="13_ih3ua"]
 [ext_resource type="PackedScene" uid="uid://b3hvwqnvm6b6t" path="res://Prefab/info_trigger_damage.tscn" id="14_i83th"]
+[ext_resource type="PackedScene" uid="uid://h7pm2f88mwut" path="res://Prefab/item_base_ammo.tscn" id="16_diddo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nt2gs"]
 sky_horizon_color = Color(0.651152, 0.659578, 0.673774, 1)
@@ -150,3 +151,6 @@ ammount = 55
 
 [node name="InfoTriggerDeath2" parent="." instance=ExtResource("13_ih3ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.950755, 4.73714, 12.7999)
+
+[node name="ItemBaseAmmo" parent="." instance=ExtResource("16_diddo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.28858, 0.99999, 8.58763)

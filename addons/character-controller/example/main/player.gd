@@ -30,6 +30,8 @@ var Health = 100
 var Armor = 100
 
 func _ready():
+	$Control/LVName.text=$".".get_parent().lvName
+	$Control/LVAnim.play("anim")
 	$Save.scene=get_tree().current_scene.scene_file_path
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	setup()
@@ -86,6 +88,7 @@ func _process(delta):
 	if(Health<=0):
 		Health=0
 		_death()
+	$Control/Panel/Ammo.text=str(GlobalSettings.baseAmmo)
 	$Control/Panel/Health.text = ("HEALTH:" + str(Health))
 	$Control/Panel/Armor.text = ("ARMOR: " + str(Armor))
 	if(Input.is_action_just_pressed("Pause")):

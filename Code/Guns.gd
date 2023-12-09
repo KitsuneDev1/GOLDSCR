@@ -2,5 +2,5 @@ extends Node
 
 var hasBaseGun = false
 
-func _process(delta):
+func _process(_delta):
 	GlobalSettings._hasBaseGun = hasBaseGun

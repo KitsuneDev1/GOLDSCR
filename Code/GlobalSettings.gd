@@ -3,6 +3,7 @@ extends Node
 @export var pixelAmmount = 2
 var scene = "null"
 var _hasBaseGun = false
+var baseAmmo = 20
 func _ready():
 	scene = "res://Scenes/MenuScene.tscn"
 

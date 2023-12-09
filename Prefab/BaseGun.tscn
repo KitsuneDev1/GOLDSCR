@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4njf42j38q2w"]
+[gd_scene load_steps=15 format=3 uid="uid://b4njf42j38q2w"]
 
 [ext_resource type="Texture2D" uid="uid://dwo6i58118bvk" path="res://Assets/Pistol_0.png" id="1_7qyml"]
 [ext_resource type="Script" path="res://Code/BaseGun.gd" id="1_uddhl"]
 [ext_resource type="Texture2D" uid="uid://cs3f8ldcijctp" path="res://Assets/Flash.png" id="3_o67jt"]
 [ext_resource type="AudioStream" uid="uid://nclb4w6jg6ls" path="res://Assets/SFX/BaseShoot.wav" id="4_w5cv5"]
+[ext_resource type="ArrayMesh" uid="uid://dw6e6jrnoarab" path="res://Assets/Models/Clip.res" id="5_xua1a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsnkk"]
 resource_name = "material_0"
@@ -77,6 +78,29 @@ _data = {
 "Shoot": SubResource("Animation_mos73")
 }
 
+[sub_resource type="Curve" id="Curve_hyjpo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_drudg"]
+curve_x = SubResource("Curve_hyjpo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tchfr"]
+angle_min = 20.9
+angle_max = 720.0
+inherit_velocity_ratio = 0.029
+spread = 8.301
+directional_velocity_min = -5.0
+directional_velocity_max = -5.0
+directional_velocity_curve = SubResource("CurveXYZTexture_drudg")
+gravity = Vector3(0, -33.335, 0)
+scale_min = 0.1
+scale_max = 0.1
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5
+collision_use_scale = true
+
 [node name="BaseGun" type="Node3D"]
 script = ExtResource("1_uddhl")
 
@@ -110,6 +134,15 @@ stream = ExtResource("4_w5cv5")
 libraries = {
 "": SubResource("AnimationLibrary_mhab3")
 }
+
+[node name="ClipParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0750218, 0.409673, -0.265015)
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_tchfr")
+draw_pass_1 = ExtResource("5_xua1a")
 
 [connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
 [connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgb03o5kgichm"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw6e6jrnoarab" path="res://Assets/Models/Clip.res" id="1_2of3x"]
+
+[sub_resource type="Curve" id="Curve_hyjpo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_drudg"]
+curve_x = SubResource("Curve_hyjpo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5vb7y"]
+angle_min = 20.9
+angle_max = 720.0
+inherit_velocity_ratio = 0.029
+spread = 8.301
+directional_velocity_min = 5.0
+directional_velocity_max = 10.0
+directional_velocity_curve = SubResource("CurveXYZTexture_drudg")
+gravity = Vector3(0, -33.335, 0)
+scale_min = 0.1
+scale_max = 0.1
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5
+collision_use_scale = true
+
+[node name="ClipParticles" type="GPUParticles3D"]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_5vb7y")
+draw_pass_1 = ExtResource("1_2of3x")

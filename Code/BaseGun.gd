@@ -11,8 +11,9 @@ func _ready():
 
 func _process(_delta):
 	if(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
-		if(canShoot):
+		if(canShoot and GlobalSettings.baseAmmo>0):
 			Shoot()
+			GlobalSettings.baseAmmo-=1
 
 func Shoot():
 	$Animator.play("Shoot")
@@ -21,6 +22,7 @@ func Shoot():
 	canShoot=false
 	$Mesh/Flash.visible = true
 	$FlashTimer.start()
+	$ClipParticles.emitting=true
 	if($Mesh/HitRay.is_colliding()):
 		if($Mesh/HitRay.get_collider().is_in_group("Solid")):
 			var inst = sparks.instantiate()
